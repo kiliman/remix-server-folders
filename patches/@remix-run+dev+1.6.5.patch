@@ -1,0 +1,13 @@
+diff --git a/node_modules/@remix-run/dev/dist/compiler.js b/node_modules/@remix-run/dev/dist/compiler.js
+index 9d39471..5c0783a 100644
+--- a/node_modules/@remix-run/dev/dist/compiler.js
++++ b/node_modules/@remix-run/dev/dist/compiler.js
+@@ -314,7 +314,7 @@ async function createBrowserBuild(config, options) {
+     entryPoints[id] = path__namespace.resolve(config.appDirectory, config.routes[id].file) + "?browser";
+   }
+ 
+-  let plugins = [urlImportsPlugin.urlImportsPlugin(), mdx.mdxPlugin(config), browserRouteModulesPlugin.browserRouteModulesPlugin(config, /\?browser$/), emptyModulesPlugin.emptyModulesPlugin(config, /\.server(\.[jt]sx?)?$/), nodeModulesPolyfill.NodeModulesPolyfillPlugin(), esbuildPluginPnp.pnpPlugin()];
++  let plugins = [urlImportsPlugin.urlImportsPlugin(), mdx.mdxPlugin(config), browserRouteModulesPlugin.browserRouteModulesPlugin(config, /\?browser$/), emptyModulesPlugin.emptyModulesPlugin(config, /(\.server(\.[jt]sx?)?$)|(\/\w*\.server\/)/), nodeModulesPolyfill.NodeModulesPolyfillPlugin(), esbuildPluginPnp.pnpPlugin()];
+   return esbuild__namespace.build({
+     entryPoints,
+     outdir: config.assetsBuildDirectory,
